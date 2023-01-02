@@ -1,0 +1,212 @@
+game:GetService("StarterGui"):SetCore("SendNotification", {Title = "welcome to our anti lock hub", Text = "/silentaim", Duration = 4,});
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Window = Rayfield:CreateWindow({
+	Name = "primes anti GG/SILENTAIM",
+	LoadingTitle = "made by prime",
+	LoadingSubtitle = "discord.gg/silentaim",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "prime dub"
+	},
+        Discord = {
+        	Enabled = true,
+        	Invite = "silentaim", -- The Discord invite code, do not include discord.gg/
+        	RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+        },
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "/silentaim key system",
+		Subtitle = "! prime 0001",
+		Note = "Join the discord (discord.gg/silentaim) for key",
+		FileName = "primes key",
+		SaveKey = true,
+		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = "prime"
+	}
+})
+local Tab = Window:CreateTab("anti lock", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Sky aa")
+
+local Toggle = Tab:CreateToggle({
+    Name = "sky aa",
+    CurrentValue = false,
+    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+       getgenv().SkyToggle = Value
+    end,
+})
+
+getgenv().Sky = false
+getgenv().SkyAmount = 825
+getgenv().SkyToggle = false -- New toggle variable
+
+game:GetService("RunService").heartbeat:Connect(function()
+    if getgenv().SkyToggle then  -- Check the state of the toggle
+        local vel = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, getgenv().SkyAmount, 0)
+        game:GetService("RunService").RenderStepped:Wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = vel
+    end 
+end)
+local Toggle = Tab:CreateToggle({
+    Name = "desync",
+    CurrentValue = false,
+    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+       getgenv().demisethebest = Value
+    end,
+})
+getgenv().demisethebest = false
+
+game:GetService("RunService").heartbeat:Connect(function()
+    if getgenv().demisethebest == true then 
+    local abc = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(1,1,1) * (2^16)
+    game:GetService("RunService").RenderStepped:Wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = abc
+    end 
+end)
+local Section = Tab:CreateSection("prediction breaker")
+
+local Toggle = Tab:CreateToggle({
+	Name = "break there prediction.",
+	CurrentValue = false,
+	Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+	    getgenv().PredictionBreaker = value
+		-- The function that takes place when the toggle is pressed
+    		-- The variable (Value) is a boolean on whether the toggle is true or false
+	end,
+})
+getgenv().PredictionBreaker = false
+
+    game.RunService.Heartbeat:Connect(function()
+        if getgenv().PredictionBreaker then
+        local CurrentVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+        game.RunService.RenderStepped:Wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = CurrentVelocity
+        end
+    end)
+    local Tab = Window:CreateTab("primes aimviewer", 4483362458) -- Title, Image
+    local Section = Tab:CreateSection("primes aimview.")
+local Paragraph = Tab:CreateParagraph({Title = "aimviewer notes", Content = "this aimviewer is auto executed on inj. we offer security unlike raycode x with there injection logs"})
+local Section = Tab:CreateSection("how to use")
+local Label = Tab:CreateLabel("to disable the tracer use i to toggle it on someone look at them and press t")
+local Section = Tab:CreateSection("this will only work if they have a gun out!")
+_G.enable = true
+_G.color = Color3.fromRGB(255,0,255)
+_G.toggle_keybind = "i" -- enable tracer and disable
+_G.swith_nigga = 't' -- press t and u will see a noti on the user ur tracer is on 
+_G.method = "MousePos" --had a stroke sotkraakdakdakdkadkadkakdakdakdkdakdakdkadkadka
+
+if game.PlaceId == 2788229376 then
+    _G.method = "MousePos"
+end
+
+
+
+
+---------------------------------------------------------------
+local rs = game:GetService("RunService")
+local localPlayer = game.Players.LocalPlayer
+local mouse = localPlayer:GetMouse()
+local target;
+
+
+
+function getgun()
+    for i,v in pairs(target.Character:GetChildren()) do
+        if v and (v:FindFirstChild('Default') or v:FindFirstChild('Handle') )then
+            return v
+        end
+    end
+end
+
+function sendnotifi(message)
+
+
+    game.StarterGui:SetCore("SendNotification", {
+        Title = '';
+        Text = message;
+        Duration = "1";
+    })
+
+    end
+
+
+function get_closet()
+    local a = math.huge
+    local b;
+
+
+
+    for i, v in pairs(game.Players:GetPlayers()) do
+        if v ~= localPlayer and v.Character and v.Character:FindFirstChild("Head") and  v.Character:FindFirstChild("HumanoidRootPart")  then
+            local c = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+            local d = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(c.X, c.Y)).Magnitude
+
+            if a > d then
+                b = v
+                a = d
+            end
+        end
+    end
+
+    return b
+end
+
+--- 
+mouse.KeyDown:Connect(function(z)
+    if z == _G.toggle_keybind then
+        if _G.enable == false then
+            _G.enable = true
+            sendnotifi("enabled")
+        elseif _G.enable == true then
+            _G.enable = false 
+            sendnotifi("disabled")
+        end
+    end
+end)
+
+mouse.KeyDown:Connect(function(z)
+    if z == _G.swith_nigga then
+        target = get_closet()
+        sendnotifi("targeting: "..tostring(target.Name))
+    end
+end)
+---
+
+-- minified it 
+local a=Instance.new("Beam")a.Segments=1;a.Width0=0.2;a.Width1=0.2;a.Color=ColorSequence.new(_G.color)a.FaceCamera=true;local b=Instance.new("Attachment")local c=Instance.new("Attachment")a.Attachment0=b;a.Attachment1=c;a.Parent=workspace.Terrain;b.Parent=workspace.Terrain;c.Parent=workspace.Terrain
+
+task.spawn(function()
+    rs.RenderStepped:Connect(function()
+ 
+    local character = localPlayer.Character
+        if not character then
+        a.Enabled = false
+        return
+    end
+
+
+ 
+
+
+
+    if _G.enable  and getgun() and target.Character:FindFirstChild("BodyEffects") and target.Character:FindFirstChild("Head")  then
+        a.Enabled = true
+        b.Position =  target.Character:FindFirstChild("Head").Position
+        c.Position = target.Character.BodyEffects[_G.method].Value ---edit this if some random ass game got some weird ass other name :palingface
+    else
+        a.Enabled = false
+    end
+
+    end)
+end)
+
+
+local Tab = Window:CreateTab("credits", 4483362458) -- Title, Image
+local Label = Tab:CreateLabel("thanks discord.gg/silentaim for creating this")
+local Label = Tab:CreateLabel("credits to ppl who gave these antis.")
