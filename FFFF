@@ -95,10 +95,6 @@ local Paragraph = Tab:CreateParagraph({Title = "aimviewer notes", Content = "thi
 local Section = Tab:CreateSection("how to use")
 local Label = Tab:CreateLabel("to disable the tracer use i to toggle it on someone look at them and press t")
 local Section = Tab:CreateSection("this will only work if they have a gun out!")
-_G.enable = true
-_G.color = Color3.fromRGB(255,0,255)
-_G.toggle_keybind = "i" -- enable tracer and disable
-_G.swith_nigga = 't' -- press t and u will see a noti on the user ur tracer is on 
 _G.method = "MousePos" --had a stroke sotkraakdakdakdkadkadkakdakdakdkdakdakdkadkadka
 
 if game.PlaceId == 2788229376 then
